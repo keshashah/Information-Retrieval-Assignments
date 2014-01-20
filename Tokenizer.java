@@ -7,17 +7,21 @@ class Tokenizer
 
     public static void main (String[] args) throws java.lang.Exception
 	{
+		//Taking a fix string as input for testing. Can be taken from file as well. 
 		String input="Suffix Removal from privacy refusal communism chemist maintainence freedom trainer veracity argument heaviness fellowship transition eradicate enlighten terrify\n Now comes prefix like nonviolent enact inert unambigious discomfort coorperation devalue autopilot prejudgment postmortem";
-        String regex = "[\n\\s;.,:'!?()-]";
+	        String regex = "[\n\\s;.,:'!?()-]";
 		
 		String[] tokens = input.split(regex);
-        String[] db_terms = new String[100];
-        int k=0;
+	       	String[] db_terms = new String[100];
+        
+		int k=0;
+		
 		for(int i = 0; i < tokens.length; i++)
-        {
+        	{
             //System.out.println(tokens[i]);
-            if( !tokens[i].equals("is") && !tokens[i].equals("the") && !tokens[i].equals("in")  && !tokens[i].equals("to")  && !tokens[i].equals("a") )
-            {
+        
+		if( !tokens[i].equals("is") && !tokens[i].equals("the") && !tokens[i].equals("in")  && !tokens[i].equals("to")  && !tokens[i].equals("a") )
+            	{
                 if(tokens[i].endsWith("ed"))
                     db_terms[k]=tokens[i].substring(0,tokens[i].length()-2);
                 else if(tokens[i].endsWith("ment"))
@@ -76,12 +80,12 @@ class Tokenizer
                     db_terms[k]=tokens[i].substring(4,tokens[i].length());
                 else 
                     db_terms[k]=tokens[i].substring(0,tokens[i].length());
-                System.out.println(db_terms[k]);
+                
+		//printing the terms on stdout. Can be taken to a file.
+		System.out.println(db_terms[k]);
                 k++;
             }
-            
         }
 	}
-
 }
 
